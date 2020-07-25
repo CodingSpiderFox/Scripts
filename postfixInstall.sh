@@ -28,7 +28,7 @@ smtp_extra_recipient_limit = 5
 
 
 inet_protocols = ipv4
-myhostname = $(hostname)
+myhostname = $(cat /etc/hostname)
 smtpd_banner = \$myhostname ESMTP $mail_name
 mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16
 biff = no
