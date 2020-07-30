@@ -40,6 +40,10 @@ soft_bounce = yes
 bounce_queue_lifetime = 0
 message_size_limit = 26214400
 
+virtual_alias_maps = hash:/etc/postfix/virtual
+transport_maps = hash:/etc/postfix/transport
+
+
 " > /etc/postfix/main.cf
 
 echo "
@@ -56,9 +60,16 @@ echo "
 
 " > /etc/postfix/header_checks
 
+
 postmap /etc/postfix/header_checks
 
 touch /etc/postfix/sasl_passwd
 postmap /etc/postfix/sasl_passwd
+
+touch /etc/postfix/virtual
+postmap /etc/postfix/virtual
+
+touch /etc/postfix/transport
+postmap /etc/postfix/transport
 
 /etc/init.d/postfix reload
