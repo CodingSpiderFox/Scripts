@@ -1,6 +1,6 @@
 #/bin/bash
 
-echo =============================== UPGRADE SYSTEM ===============================
+echo "=============================== UPGRADE SYSTEM ==============================="
 
 echo "
 deb http://deb.debian.org/debian/ stable main
