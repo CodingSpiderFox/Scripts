@@ -1,5 +1,7 @@
 #/bin/bash
 
+echo =============================== UPGRADE SYSTEM ===============================
+
 echo "
 deb http://deb.debian.org/debian/ stable main
 deb-src http://deb.debian.org/debian/ stable main
