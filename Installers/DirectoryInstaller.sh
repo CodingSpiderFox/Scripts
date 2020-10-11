@@ -25,6 +25,7 @@ cat /etc/crontab | grep "/opt/kito/scripts/start/year"          || echo "0 0    
 cat /etc/crontab | grep "/opt/kito/scripts/start/month"         || echo "0 0       1 * *     root   /opt/kito/scripts/runDirectory.sh /opt/kito/scripts/start/month" >> /etc/crontab
 cat /etc/crontab | grep "/opt/kito/scripts/start/week"          || echo "0 0       * * 1     root   /opt/kito/scripts/runDirectory.sh /opt/kito/scripts/start/week" >> /etc/crontab
 cat /etc/crontab | grep "/opt/kito/scripts/start/day"           || echo "0 0       * * *     root   /opt/kito/scripts/runDirectory.sh /opt/kito/scripts/start/day" >> /etc/crontab
+cat /etc/crontab | grep "/opt/kito/scripts/start/hour"          || echo "0 *       * * *     root   /opt/kito/scripts/runDirectory.sh /opt/kito/scripts/start/hour" >> /etc/crontab
 
 wget https://raw.githubusercontent.com/TheKito/Scripts/master/runDirectory.sh -O /opt/kito/scripts/runDirectory.sh
 chmod +x /opt/kito/scripts/runDirectory.sh
