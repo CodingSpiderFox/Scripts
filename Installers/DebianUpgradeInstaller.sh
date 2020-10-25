@@ -9,8 +9,7 @@ deb-src http://security.debian.org/debian-security stable/updates main
 
 mkdir -p /opt/kito/scripts/run/weekly
 
-echo "
-#/bin/bash
+echo "#/bin/bash
 
 export DEBIAN_FRONTEND=noninteractive;
 
