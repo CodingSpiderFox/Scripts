@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p /var/www/default
+
 echo "
 <Directory /var/www/*/public>
         Options -Indexes
@@ -70,8 +72,6 @@ d=/var/www/default
 echo "
 <VirtualHost *:80>
         DocumentRoot "$d/public"
-        ServerAlias "$dn"
-        ServerAlias "dev.$dn"
         ErrorLog "$d/log/$(hostname)_error.log"
         CustomLog "$d/log/$(hostname)_access.log" combined
 
