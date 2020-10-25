@@ -7,7 +7,7 @@ deb http://security.debian.org/debian-security stable/updates main
 deb-src http://security.debian.org/debian-security stable/updates main
 " > /etc/apt/sources.list
 
-mkdir -p /Data/Scripts/runWeekly/ 
+mkdir -p /opt/kito/scripts/run/weekly
 
 echo "
 #/bin/bash
@@ -23,7 +23,7 @@ apt-get autoremove -y
 
 test -f /var/run/reboot-required && reboot
 
-" > /Data/Scripts/runWeekly/upgradeSystem.sh
+" > /opt/kito/scripts/run/weekly/upgradeSystem.sh
 
-chmod +x /Data/Scripts/runWeekly/upgradeSystem.sh
-/Data/Scripts/runWeekly/upgradeSystem.sh
+chmod +x /opt/kito/scripts/run/weekly/upgradeSystem.sh
+/opt/kito/scripts/run/weekly/upgradeSystem.sh
