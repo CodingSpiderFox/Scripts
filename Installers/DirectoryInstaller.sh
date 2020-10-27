@@ -7,12 +7,12 @@ mkdir -p /opt/kito/scripts/run/weekly
 mkdir -p /opt/kito/scripts/run/monthly
 mkdir -p /opt/kito/scripts/run/yearly
 
-mkdir -p /opt/kito/scripts/run/start/up
-mkdir -p /opt/kito/scripts/run/start/year
-mkdir -p /opt/kito/scripts/run/start/month
-mkdir -p /opt/kito/scripts/run/start/week
-mkdir -p /opt/kito/scripts/run/start/day
-mkdir -p /opt/kito/scripts/run/start/hour
+mkdir -p /opt/kito/scripts/start/up
+mkdir -p /opt/kito/scripts/start/year
+mkdir -p /opt/kito/scripts/start/month
+mkdir -p /opt/kito/scripts/start/week
+mkdir -p /opt/kito/scripts/start/day
+mkdir -p /opt/kito/scripts/start/hour
 
 cat /etc/crontab | grep "/opt/kito/scripts/run/minutely"        || echo "* *       * * *   root    /opt/kito/scripts/runDirectory.sh /opt/kito/scripts/run/minutely" >> /etc/crontab
 cat /etc/crontab | grep "/opt/kito/scripts/run/hourly"          || echo "$(shuf -i 0-59 -n 1) * * * *   root    /opt/kito/scripts/runDirectory.sh /opt/kito/scripts/run/hourly" >> /etc/crontab
