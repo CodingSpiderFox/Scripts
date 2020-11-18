@@ -33,11 +33,11 @@ try:
         conn.disable_device()
 
         serial = conn.get_serialnumber();
-        time = time.mktime(conn.get_time().timetuple())
+        timeStamp = time.mktime(conn.get_time().timetuple())
 
         users = conn.get_users()
         for user in users:
-                sys.stdout.write (str(time))
+                sys.stdout.write (str(timeStamp))
                 sys.stdout.write (str(';'))
                 sys.stdout.write (serial)
                 sys.stdout.write (str(';'))
