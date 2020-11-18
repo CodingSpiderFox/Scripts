@@ -29,7 +29,7 @@ try:
 
         conn = zk.connect()
         conn.disable_device()
-        
+
         serial = conn.get_serialnumber();
         time = time.mktime(conn.get_time().timetuple())
 
