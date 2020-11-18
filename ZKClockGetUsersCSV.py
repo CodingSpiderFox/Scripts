@@ -1,5 +1,6 @@
 from zk import ZK, const
 import sys
+import time
 
 host = sys.argv[len(sys.argv)-1]
 
@@ -7,9 +8,11 @@ conn = None
 # create ZK instance
 zk = ZK(host, port=4370, timeout=5, password=0, force_udp=False, ommit_ping=False)
 try:
-        sys.stdout.write ('idDevice')
+        sys.stdout.write ('deviceTime')
         sys.stdout.write (str(';'))
-        sys.stdout.write ('id')
+        sys.stdout.write ('deviceId')
+        sys.stdout.write (str(';'))
+        sys.stdout.write ('userId')
         sys.stdout.write (str(';'))
         sys.stdout.write ('userPrivilege')
         sys.stdout.write (str(';'))
@@ -17,16 +20,21 @@ try:
         sys.stdout.write (str(';'))
         sys.stdout.write ('userPassword')
         sys.stdout.write (str(';'))
-        sys.stdout.write ('idGroup')
+        sys.stdout.write ('userCustomId')
         sys.stdout.write (str(';'))
-        sys.stdout.write ('idUser')
+        sys.stdout.write ('groupId')
         sys.stdout.write (str('\n'))
 
         conn = zk.connect()
         conn.disable_device()
+        
         serial = conn.get_serialnumber();
+        time = time.mktime(conn.get_time().timetuple())
+
         users = conn.get_users()
         for user in users:
+                sys.stdout.write (str(time))
+                sys.stdout.write (str(';'))
                 sys.stdout.write (serial)
                 sys.stdout.write (str(';'))
                 sys.stdout.write (str(user.uid))
@@ -37,9 +45,9 @@ try:
                 sys.stdout.write (str(';'))
                 sys.stdout.write (str(user.password))
                 sys.stdout.write (str(';'))
-                sys.stdout.write (str(user.group_id))
-                sys.stdout.write (str(';'))
                 sys.stdout.write (str(user.user_id))
+                sys.stdout.write (str(';'))
+                sys.stdout.write (str(user.group_id))
                 sys.stdout.write (str('\n'))
         conn.enable_device()
 
