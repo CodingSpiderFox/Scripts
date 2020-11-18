@@ -1,3 +1,5 @@
+#  pip install -U pyzk
+
 from zk import ZK, const
 import sys
 import time
@@ -5,7 +7,7 @@ import time
 host = sys.argv[len(sys.argv)-1]
 
 conn = None
-# create ZK instance
+
 zk = ZK(host, port=4370, timeout=5, password=0, force_udp=False, ommit_ping=False)
 try:
         sys.stdout.write ('deviceTime')
