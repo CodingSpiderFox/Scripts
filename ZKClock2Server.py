@@ -13,8 +13,8 @@ import requests
 host = sys.argv[len(sys.argv)-2]
 url = sys.argv[len(sys.argv)-1]
 
-print host
-print url
+#print host
+#print url
 
 conn = None
 
@@ -36,26 +36,26 @@ try:
 
         device = {'id': serial, 'time': timeStamp}
 
-        print device
+#       print device
 
-#       x = requests.post(url, json = {'device': device})
+        x = requests.post(url, json = {'device': device})
 
 #       print x.text
 
 
         for user in users:
                 _user = {'id': str(user.uid), 'privilege': str(user.privilege), 'name': str(user.name), 'password': str(user.password), 'idCustom': str(user.user_id), 'idGroup': str(user.group_id)}
-                print _user
-#               x = requests.post(url, json = {'device': device, 'user': _user})
-#               print x.text
+#                print _user
+                x = requests.post(url, json = {'device': device, 'user': _user})
+#                print x.text
 
         for record in records:
                 _user = {'id': str(record.uid), 'idCustom': str(record.user_id)}
-                print _user
+#                print _user
                 _record = {'time': str(time.mktime(record.timestamp.timetuple())), 'status': str(record.status), 'punch': str(record.punch)}
-                print _record
-#               x = requests.post(url, json = {'device': device, 'user': _user, 'record': _record})
-#               print x.text
+#                print _record
+                x = requests.post(url, json = {'device': device, 'user': _user, 'record': _record})
+#                print x.text
 
 
         sys.exit(0)
