@@ -20,21 +20,22 @@ conn = None
 
 zk = ZK(host, port=4370, timeout=5, password=0, force_udp=False, ommit_ping=False)
 try:
+        timeToday = datetime.today()
 
         conn = zk.connect()
         conn.disable_device()
         serial = conn.get_serialnumber();
-        timeStamp = time.mktime(conn.get_time().timetuple())
+        timeOffset = time.mktime(conn.get_time().timetuple()) - time.mktime(timeToday.timetuple())        
         users = conn.get_users()
         records = conn.get_attendance()
-        conn.set_time(datetime.today())
+        conn.set_time(timeToday)
         conn.enable_device()
 
 
 #       print serial
 #       print timeStamp
 
-        device = {'id': serial, 'time': timeStamp}
+        device = {'id': serial, 'time': timeOffset}
 
 #       print device
 
