@@ -26,6 +26,7 @@ try:
         conn.disable_device()
         serial = conn.get_serialnumber();
         timeOffset = time.mktime(conn.get_time().timetuple()) - time.mktime(timeToday.timetuple())        
+        timeZoneOffset = -time.timezone        
         users = conn.get_users()
         records = conn.get_attendance()
         conn.set_time(timeToday)
@@ -35,7 +36,7 @@ try:
 #       print serial
 #       print timeStamp
 
-        device = {'id': serial, 'time': timeOffset}
+        device = {'id': serial, 'timeOffset': timeOffset, 'timeZoneOffset': timeZoneOffset}
 
 #       print device
 
