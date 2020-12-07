@@ -31,6 +31,8 @@ try:
         records = conn.get_attendance()
         conn.set_time(timeToday)
         conn.enable_device()
+        conn.disconnect()
+        conn = None
 
 
 #       print serial
